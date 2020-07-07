@@ -188,12 +188,25 @@ private _vehicleTypeStriker = [
     "M1133_MEV_DG1_NOSLATWOOD",
     "M1135_ATGMV_DG1_NOSLATWOOD",
     "M1133_MEV_DG1_NOSLATDES",
-    "M1135_ATGMV_DG1_NOSLATDES"
+    "M1135_ATGMV_DG1_NOSLATDES",
+    "rhsusf_stryker*"
 ];
 if (typeOf _vehicle in _vehicleTypeStriker) then {
     // Always added
-    private _strykerLable = ["STRYKER"] call FUNC(getVehicleLable);
-    [_vehicle,[0.420521,3.50066,1.35656],180,_strykerLable] call FUNC(createVehicleLable);
+    // private _strykerLable = ["STRYKER"] call FUNC(getVehicleLable);
+
+    // Sides
+    if(_lable1 != "") then { [_vehicle,[1.9,1,-0.3],270,_lableTexture1, [0.1, 0, 1]] call FUNC(createVehicleLable);}; // right
+    if(_lable2 != "") then { [-0.73,-0.8,-0.3],90,_lableTexture1, [0.1, 0, 1]] call FUNC(createVehicleLable);}; // left
+
+    // Front/back
+    if(_lable3 != "") then { [.63,-2.858,-.41],0,_lableTexture2, [0.1, 0, 1]] call FUNC(createVehicleLable);}; // back
+    if(_lable4 != "") then { [.5,3.755,-.7],180,_lableTexture2, [0.1, 0, 1]] call FUNC(createVehicleLable);}; // front
+
+    // [_vehicle,[1.9,1,-0.3],270,_strykerLable, [0.1, 0, 1]] call FUNC(createVehicleLable); // Right side of vehicle
+    // [_vehicle,[-0.73,-0.8,-0.3],90,_strykerLable, [0.1, 0, 1]] call FUNC(createVehicleLable); // Left side of Vehicle
+    // [_vehicle,[.63,-2.858,-.41],0,_strykerLable, [0, -.18, 1]] call FUNC(createVehicleLable); // Back of vehicle
+    // [_vehicle,[.5,3.755,-.7],180,_strykerLable] call FUNC(createVehicleLable); // Front of vehicle
 };
 
 

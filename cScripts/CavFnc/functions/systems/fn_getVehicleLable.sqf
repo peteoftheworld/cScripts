@@ -34,6 +34,7 @@ private _vehicleTypeUH60 = [
     "Cav_Alpha_UH60M2"
 ];
 private _vehicleTypeC130J = [
+    
     "RHS_C130J",
     "Cav_Alpha_C130J"
 ];

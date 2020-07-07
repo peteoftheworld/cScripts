@@ -302,13 +302,107 @@ private _vehicleTypeStriker = [
     "M1133_MEV_DG1_NOSLATWOOD",
     "M1135_ATGMV_DG1_NOSLATWOOD",
     "M1133_MEV_DG1_NOSLATDES",
-    "M1135_ATGMV_DG1_NOSLATDES"
+    "M1135_ATGMV_DG1_NOSLATDES",
+    "rhsusf_stryker_m1126_m2_d"
 ];
+
+// TODO: Get dialog box to show in game.
+// TODO: Fix any syntax errors upon runtime
+// OPTIONAL: Add comments telling what parts do what exactly?
+
 if (typeOf _vehicle in _vehicleTypeStriker) exitWith {
+_dialogResult = [
+        "MRAP Side Number Selection",
+        [
+            ["Vehicle Number",["None","VIC 1","VIC 2","VIC 3","VIC 4","VIC 5","VIC 6"],1],
+            ["Side Number (1)",["None","A","B","C","S","1","2","3","4","5","6","7","8","9","0"],0],
+            ["Side Number (2)",["None","A","B","C","S","1","2","3","4","5","6","7","8","9","0"],0],
+            ["Side Number (3)",["None","A","B","C","S","1","2","3","4","5","6","7","8","9","0"],0],
+            ["Side Number (4)",["None","A","B","C","S","1","2","3","4","5","6","7","8","9","0"],0]
+
+        ]
+    ] call Ares_fnc_ShowChooseDialog;
 
     if (count _dialogResult == 0) exitWith {};
 
-    [_vehicle] call FUNC(setVehicleLable);
+    _texture1 = switch (_dialogResult select 0) do {
+        case 0: {"";};
+        case 1: {"vic1";};
+        case 2: {"vic2";};
+        case 3: {"vic3";};
+        case 4: {"vic4";};
+        case 5: {"vic5";};
+        case 6: {"vic6";};
+    };
+    _texture2 = switch (_dialogResult select 1) do {
+        case 0: {"";};
+        case 1: {"A";};
+        case 2: {"B";};
+        case 3: {"C";};
+        case 4: {"S";};
+        case 5: {"1";};
+        case 6: {"2";};
+        case 7: {"3";};
+        case 8: {"4";};
+        case 9: {"5";};
+        case 10: {"6";};
+        case 11: {"7";};
+        case 12: {"8";};
+        case 13: {"9";};
+        case 14: {"0";};
+    };
+    _texture3 = switch (_dialogResult select 2) do {
+        case 0: {"";};
+        case 1: {"A";};
+        case 2: {"B";};
+        case 3: {"C";};
+        case 4: {"S";};
+        case 5: {"1";};
+        case 6: {"2";};
+        case 7: {"3";};
+        case 8: {"4";};
+        case 9: {"5";};
+        case 10: {"6";};
+        case 11: {"7";};
+        case 12: {"8";};
+        case 13: {"9";};
+        case 14: {"0";};
+    };
+    _texture4 = switch (_dialogResult select 3) do {
+        case 0: {"";};
+        case 1: {"A";};
+        case 2: {"B";};
+        case 3: {"C";};
+        case 4: {"S";};
+        case 5: {"1";};
+        case 6: {"2";};
+        case 7: {"3";};
+        case 8: {"4";};
+        case 9: {"5";};
+        case 10: {"6";};
+        case 11: {"7";};
+        case 12: {"8";};
+        case 13: {"9";};
+        case 14: {"0";};
+    };
+    _texture5 = switch (_dialogResult select 4) do {
+        case 0: {"";};
+        case 1: {"A";};
+        case 2: {"B";};
+        case 3: {"C";};
+        case 4: {"S";};
+        case 5: {"1";};
+        case 6: {"2";};
+        case 7: {"3";};
+        case 8: {"4";};
+        case 9: {"5";};
+        case 10: {"6";};
+        case 11: {"7";};
+        case 12: {"8";};
+        case 13: {"9";};
+        case 14: {"0";};
+    };
+    [_vehicle,_texture1,_texture2,_texture3,_texture4,_texture5] remoteExec [QFUNC(setVehicleLable),0,true];
 };
 
 
@@ -350,16 +444,7 @@ if (typeOf _vehicle in _vehicleTypeAbrams) exitWith {
         case 5: {"vic5";};
         case 6: {"vic6";};
     };
-    _texture2 = switch (_dialogResult select 1) do {
-        case 0: {"";};
-        case 1: {"vic1";};
-        case 2: {"vic2";};
-        case 3: {"vic3";};
-        case 4: {"vic4";};
-        case 5: {"vic5";};
-        case 6: {"vic6";};
-    };
-    [_vehicle,_texture1,_texture2] remoteExec [QFUNC(setVehicleLable),0,true];
+    [_vehicle,_texture1] remoteExec [QFUNC(setVehicleLable),0,true];
 };
 
 
